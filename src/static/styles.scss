@@ -1,0 +1,13 @@
+@import '~tachyons';
+@import './theme';
+
+/* purgecss start ignore */
+
+html,
+body,
+#__next {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* purgecss end ignore */

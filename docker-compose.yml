@@ -1,0 +1,24 @@
+version: '2.1'
+
+services:
+  web:
+    tty: true
+    stdin_open: true
+    depends_on:
+      - 'mongo'
+    image: samrose3/shrink-link
+    build: .
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=production
+      - BASE_URL=http://0.0.0.0:3000
+      - MONGO_URL=mongodb://mongo:27017/shrink-link
+  mongo:
+    image: 'mongo:3.4.1'
+    ports:
+      - '27017:27017'
+    volumes:
+      - 'mongo:/data/db'
+volumes:
+  mongo:

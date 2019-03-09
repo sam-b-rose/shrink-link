@@ -1,0 +1,83 @@
+/* purgecss start ignore */
+
+$css--font-face: true;
+$css--helpers: false;
+$css--body: true;
+$css--use-layer: true;
+$css--reset: true;
+$css--typography: true;
+$css--plex: true;
+
+$css--use-experimental-grid: false;
+$css--use-experimental-grid-fallback: false;
+
+$feature-flags: (
+  components-x: true,
+  breaking-changes-x: false,
+  ui-shell: false,
+  grid: true,
+  grid-columns-16: false,
+  grid--fallback: false,
+);
+
+@import './export';
+
+// Global
+@import '~carbon-components/scss/globals/scss/feature-flags';
+@import '~carbon-components/scss/globals/scss/vars';
+@import '~carbon-components/scss/globals/scss/colors';
+@import '~carbon-components/scss/globals/scss/theme';
+@import '~carbon-components/scss/globals/scss/mixins';
+@import '~carbon-components/scss/globals/scss/layout';
+@import '~carbon-components/scss/globals/scss/layer';
+@import '~carbon-components/scss/globals/scss/spacing';
+@import '~carbon-components/scss/globals/scss/import-once';
+@import '~carbon-components/scss/globals/scss/css--reset';
+@import '~carbon-components/scss/globals/scss/css--font-face';
+@import '~carbon-components/scss/globals/scss/css--helpers';
+@import '~carbon-components/scss/globals/scss/css--body';
+@import '~carbon-components/scss/globals/scss/css--typography';
+@import '~carbon-components/scss/globals/grid/grid';
+
+// Components
+@import '~carbon-components/scss/components/button/button';
+@import '~carbon-components/scss/components/code-snippet/code-snippet';
+@import '~carbon-components/scss/components/form/form';
+@import '~carbon-components/scss/components/link/link';
+@import '~carbon-components/scss/components/number-input/number-input';
+@import '~carbon-components/scss/components/select/select';
+@import '~carbon-components/scss/components/structured-list/structured-list';
+@import '~carbon-components/scss/components/text-input/text-input';
+@import '~carbon-components/scss/components/tile/tile';
+
+// Overriders
+.bx--select__arrow {
+  top: 36px;
+}
+
+.bx--number__controls {
+  top: 18px;
+}
+
+.bx--text-input {
+  transition: 100ms outline;
+}
+
+.bx--structured-list-content--nowrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Carbon X
+h1,
+.bx--type-productive-hdeading-05 {
+  @include type-style('productive-heading-05');
+}
+
+p,
+.bx--type-body-short-02 {
+  @include type-style('body-short-02');
+}
+
+/* purgecss end ignore */
