@@ -13,7 +13,6 @@
     "node": true
   },
   "extends": [
-    "standard",
     "eslint:recommended",
     "plugin:import/errors",
     "plugin:react/recommended",
@@ -30,5 +29,14 @@
     "react",
     "import",
     "jsx-a11y"
-  ]
+  ],
+  "settings": {
+    "import/resolver": {
+      "babel-module": {
+        "alias": {
+          "~": "./src"
+        }
+      }
+    }
+  }
 }

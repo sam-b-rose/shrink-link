@@ -1,19 +1,14 @@
 import React from 'react'
 
 import {
-  Tile
-} from 'carbon-components-react'
-
-import {
   UrlForm,
   UrlHistory,
   UrlDetails
-} from '../components/Url'
-
-import '../static/styles.scss'
+} from '~/containers/Url'
 
 const MAX_HISTORY = 25
 const URL_HISTORY = 'url-history'
+
 class IndexPage extends React.Component {
   state = {
     history: [],
@@ -56,23 +51,21 @@ class IndexPage extends React.Component {
   render() {
     const { history, details } = this.state
     return (
-      <div className="bx--grid--full-width h-100">
-        <div className="bx--row h-100">
-          <div
-            className="h-100"
-            style={{backgroundColor: 'var(--ui-02)'}}>
+      <div className="h-100">
+        <div className="flex h-100">
+          <div className="h-100 w-50">
             <div className="pv5 ph5">
               <UrlForm onSubmit={this.onSubmit}/>
             </div>
           </div>
-          <div className="bx--col flex justify-center h-100 overflow-auto">
+          <div className="flex justify-center w-50 h-100 overflow-auto">
             <div className="pa5">
-              <Tile className="mb4">
+              <div className="mb4">
                 <UrlDetails {...details} />
-              </Tile>
-              <Tile className="mb6">
+              </div>
+              <div className="mb6">
                 <UrlHistory items={history} onSelect={this.onSelectHistory}/>
-              </Tile>
+              </div>
             </div>
           </div>
         </div>

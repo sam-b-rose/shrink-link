@@ -3,10 +3,9 @@ import React from 'react'
 import {
   ViewerFrame,
   ViewerPasscode
-} from '../components/Viewer'
+} from '~/containers/Viewer'
 
-import api  from '../services/api'
-import '../static/styles.scss'
+import api from '~/services/api'
 
 class ViewerPage extends React.Component {
   state = {
@@ -41,9 +40,7 @@ class ViewerPage extends React.Component {
     const { isValidated } = this.state
     const { targetUrl, passcode, message, type } = this.props
     return (
-      <div
-        className="h-100 flex items-center justify-center"
-        style={{backgroundColor: 'var(--ui-background)'}}>
+      <div className="h-100 flex items-center justify-center">
       {
         message
         ? (<div>{ message }</div>)

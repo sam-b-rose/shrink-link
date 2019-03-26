@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-unfetch'
 
-const BASE_URL = process.env.BASE_URL || `http://localhost:${process.env.PORT}`
+const BASE_URL = process.env.BASE_URL || `http://localhost:3000`
 
 export const decodeUrl = async ({ s } = { s: '' }) => {
   const res = await fetch(`${BASE_URL}/api/url/decode/${s}`)
