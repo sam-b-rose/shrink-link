@@ -7,6 +7,7 @@ const addWeeks = require('date-fns/add_weeks')
 const addMonths = require('date-fns/add_months')
 
 const { Url } = require('./url.model')
+const { uid } = require('../../utils/uid')
 const { encode, decode } = require('../../utils/base62')
 
 const dateActions = {
@@ -32,17 +33,19 @@ const addTime = (duration, unit) => {
  */
 const createUrl = async (req, res) => {
   const { url, duration, unit, passcode } = req.body
+  const _id = uid()
   const expires = duration
     ? addTime(duration, unit)
     : null
 
   // Save
   const doc = new Url({
+    _id,
     url,
     expires,
     passcode: passcode.trim()
   });
-  const { _id } = await doc.save()
+  await doc.save()
 
   // Convert
   const s = encode(_id)

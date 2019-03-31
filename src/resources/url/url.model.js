@@ -1,10 +1,12 @@
 const mongoose = require('mongoose')
-const autoIncrement = require('mongoose-auto-increment')
-
-autoIncrement.initialize(mongoose.connection);
 
 const urlSchema = new mongoose.Schema(
   {
+    _id: {
+      type: Number,
+      required: true,
+      unique: true
+    },
     url: {
       type: String,
       required: true,
@@ -21,8 +23,6 @@ const urlSchema = new mongoose.Schema(
     }
   }
 )
-
-urlSchema.plugin(autoIncrement.plugin, 'Url');
 
 const Url = mongoose.model('url', urlSchema)
 

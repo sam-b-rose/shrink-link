@@ -4,6 +4,10 @@
   "license": "MIT",
   "author": "Sam Rose",
   "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samrose3/shrink-link.git"
+  },
   "scripts": {
     "test": "jest",
     "build": "next build src",
@@ -19,7 +23,6 @@
     "isomorphic-unfetch": "^3.0.0",
     "lodash": "^4.17.11",
     "mongoose": "^5.4.14",
-    "mongoose-auto-increment": "^5.0.1",
     "morgan": "^1.9.1",
     "next": "latest",
     "react": "^16.7.0",

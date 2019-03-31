@@ -2,14 +2,11 @@ const express = require('express')
 const { json, urlencoded } = require('body-parser')
 const morgan = require('morgan')
 const next = require('next')
-const dotenv = require('dotenv')
 
 const nextConfig = require('./next.config')
 const config = require('./config')
 const { connect } = require('./utils/db')
 const apiRouter = require('./resources')
-
-dotenv.config()
 
 const app = next({ dev: config.isDev, ...nextConfig })
 const handle = app.getRequestHandler()
