@@ -1,21 +1,12 @@
 const { merge } = require('lodash')
 const env = process.env.NODE_ENV || 'development'
+const dbUrl = process.env.MONGO_URL || process.env.DB_URL || 'mongodb://localhost:27017/shrink-link'
 
-const baseConfig = {
+const config = {
   env,
+  dbUrl,
   isDev: env === 'development',
-  port: 3000
+  port: 3000,
 }
 
-let envConfig = {}
-
-switch (env) {
-  case 'dev':
-  case 'development':
-    envConfig = require('./dev')
-    break
-  default:
-    envConfig = require('./prod')
-}
-
-module.exports = merge(baseConfig, envConfig)
+module.exports = config

@@ -7,11 +7,11 @@ WORKDIR /usr/src/app
 COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
 RUN npm ci
 
-# Build Next.js application
-RUN npm build
-
 # Bundle app source
 COPY . .
+
+# Build Next.js application
+RUN npm run build
 
 EXPOSE 3000
 CMD npm start

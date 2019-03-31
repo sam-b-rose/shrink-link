@@ -21,10 +21,39 @@ Clone the repo and install dependencies.
 ```bash
 git clone https://github.com/samrose3/shrink-link.git
 cd shrink-link
-yarn
+npm install
 ```
 
 ### Developing
+
+#### Using Docker Compose
+
+You can run the app in development mode using the `docker-compose.dev.yml` configuration. This will
+
+- run the Express server
+- spin up and link a MongoDB instance
+
+##### Starting
+
+```bash
+docker-compose -f "docker-compose.dev.yml" up -d --build
+```
+
+The app should now be running on [`http://localhost:3000`](http://localhost:3000).
+
+##### Stopping
+
+You can stop the Docker containers with a Compose `down` command.
+
+```bash
+docker-compose -f "docker-compose.dev.yml" down
+```
+
+#### Without Docker
+
+You can also run the app without Docker, just make sure you provide a MongoDB URL as an environment variable. Copy the `.env.sample` file, rename it to `.env`, then replace the `MONGO_URL` with your own URL.
+
+##### Creating a MongoDB instance
 
 Create a local or hosted [MongoDB](https://www.mongodb.com/) database before running the app. You can create a free sandbox database on [mlab.com](https://mlab.com) if you want an alternative to a local DB.
 
@@ -32,22 +61,20 @@ Create a `.env` file in the root directory containing your MongoDB URL with cred
 
 ```text
 # .env
-MONGO_URL='mongodb://<user>:<password>@<hostname>:<port>/shrink-link'
+MONGO_URL=mongodb://<user>:<password>@<hostname>:<port>/shrink-link
 ```
 
 Make sure your database is running, then start the app in development mode.
 
 ```bash
-yarn dev
+npm run dev
 ```
 
 The app should now be running on [`http://localhost:3000`](http://localhost:3000).
 
 ### Running the production build
 
-You can also use Docker Compose to run the app and the database.
-
-> This has not been configured for running the application in development mode. This has been used primarily to test the Docker build before pushing next images to Docker Hub.
+You can also use Docker Compose to run the app and the database. This uses the `docker-compose.yml` configuration. Running the app production mode creates an optimized build and does not activate [hot reloading](https://www.quora.com/Whats-hot-loading-in-Webpack-and-how-does-it-work).
 
 Run a production build of the application locally.
 
