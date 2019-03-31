@@ -77,7 +77,7 @@ class IndexPage extends React.Component {
                     : (
                       <div className="mw6 pl3 f4 fw3 lh-copy light-gray">
                         <p className="mb2">
-                          Shink down that absurdly long link. Add an optional durration time to limit how long your link will work.
+                          Shink down that absurdly long link. Add an optional duration time to limit how long your link will work.
                         </p>
                         <p>
                           You can also add a passcode to protect who can use your link.
