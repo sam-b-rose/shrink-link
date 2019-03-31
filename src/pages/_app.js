@@ -2,7 +2,7 @@ import React from 'react'
 import App, { Container } from 'next/app'
 
 import 'tachyons/css/tachyons.min.css'
-import '~/assets/styles.scss'
+import '~/assets/css/styles.scss'
 
 class Layout extends React.Component {
   render () {

@@ -32,40 +32,43 @@ class UrlForm extends React.Component {
     if (!data.message) this.reset()
   }
   onInputChange = ({ target: { name, value } }) => {
+    console.log(name, value)
     this.setState({ [name]: value })
   }
   render() {
     const { url, duration, unit, passcode } = this.state
     return (
       <form onSubmit={this.submit}>
-        <Input
-          id="url"
-          name="url"
-          placeholder="https://website.com"
-          labelText="URL"
-          helperText="Required. Can't shrink a link without a link"
-          type="text"
-          value={url}
-          onChange={this.onInputChange} />
-        <NumberInput
-          id="duration"
-          name="duration"
-          labelText="Duration"
-          helperText="Place a time limit on your link"
-          value={duration}
-          onChange={this.onInputChange}
-          unit={unit}
-          units={units}
-          onUnitChange={this.onInputChange} />
-        <Input
-          id="passcode"
-          name="passcode"
-          placeholder="super-secret-passcode"
-          labelText="Passcode"
-          helperText="Protect your link"
-          type="text"
-          value={passcode}
-          onChange={this.onInputChange} />
+        <div className="mb4">
+          <Input
+            id="url"
+            name="url"
+            placeholder="https://website.com"
+            labelText="URL"
+            helperText="Required. Can't shrink a link without a link"
+            type="text"
+            value={url}
+            onChange={this.onInputChange} />
+          <NumberInput
+            id="duration"
+            name="duration"
+            labelText="Duration"
+            helperText="Place a time limit on your link"
+            value={duration}
+            onChange={this.onInputChange}
+            unit={unit}
+            units={units}
+            onUnitChange={this.onInputChange} />
+          <Input
+            id="passcode"
+            name="passcode"
+            placeholder="super-secret-passcode"
+            labelText="Passcode"
+            helperText="Protect your link"
+            type="text"
+            value={passcode}
+            onChange={this.onInputChange} />
+        </div>
         <Button type="submit">Shrink</Button>
       </form>
     )

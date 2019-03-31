@@ -3,9 +3,9 @@ import React from 'react'
 const Input = props => {
   const { labelText, helperText, id, name, placeholder, type, value, onChange } = props;
   return (
-    <div className="measure">
+    <div className="mb3">
       <label htmlFor={id} className="f6 db mb2">
-        {labelText}
+        <span className="fw6 ttu gray">{labelText}</span>
         <span className="fr i black-60">
           {helperText}
         </span>

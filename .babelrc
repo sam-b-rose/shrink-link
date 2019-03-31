@@ -10,6 +10,7 @@
           "~": "./src"
         }
       }
-    ]
+    ],
+    "inline-react-svg"
   ]
 }

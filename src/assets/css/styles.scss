@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600');
+@import '~tachyons/src/colors';
+
+html,
+body,
+#__next,
+.layout {
+  height: 100%;
+  overflow: hidden;
+  color: var(--black-70);
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+input,
+textarea,
+select {
+  color: var(--black-80);
+}
+
+.shadow-button {
+  box-shadow: 0 2px 0 var(--dark-blue);
+}
