@@ -1,8 +1,12 @@
 import React from 'react'
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import isPast from 'date-fns/is_past'
+import ClipboardJS from 'clipboard'
 
 import CopySVG from '~/assets/images/copy.svg'
+
+let clipboard = null
+const tooltipClasses = ['tooltipped', 'tooltipped-s', 'tooltipped-no-delay']
 
 class UrlDetails extends React.Component {
   state = {
@@ -11,6 +15,15 @@ class UrlDetails extends React.Component {
 
   componentDidMount() {
     this.setState({ baseUrl: window.location.href })
+    clipboard = new ClipboardJS('.copy')
+    clipboard.on('success', function(e) {
+      e.trigger.classList.add(...tooltipClasses)
+      setTimeout(() => e.trigger.classList.remove(...tooltipClasses), 1500)
+    });
+  }
+
+  componentWillUnmount() {
+    clipboard.destroy()
   }
 
   copyLink = (type, helperText, link) => (
@@ -21,8 +34,13 @@ class UrlDetails extends React.Component {
       </div>
       <div className="flex justify-between">
         <a className="link washed-blue" href={link}>{link}</a>
-        <button className="link bn bg-transparent pointer near-white f6">
-          Copy <span className="ml2"><CopySVG /></span></button>
+        <button
+          className="copy link bn bg-transparent pointer near-white f6"
+          aria-label="Copied!"
+          onClick={e => e.target.focus()}
+          data-clipboard-text={link}>
+          Copy <span className="ml2"><CopySVG /></span>
+        </button>
       </div>
     </div>
   )

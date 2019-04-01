@@ -23,6 +23,7 @@ class UrlHistory extends React.Component {
         <span className={`h1 w1 center br-100 ${isExpired ? 'bg-light-red' : 'bg-light-green'}`} />
         <button
           className="remove link absolute top-0 right-0 h-100 ph3 bn bg-transparent f3 silver pointer"
+          tab-index="-1"
           aria-label="Remove link"
           onClick={(e) => this.onRemove(e, item, index)}>
           &times;
