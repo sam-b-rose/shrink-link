@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Input = props => {
-  const { labelText, helperText, id, name, placeholder, type, value, onChange } = props;
+  const { labelText, helperText, id, name, placeholder, type, value, onChange, ...inputProps } = props;
   return (
     <div className="mb3">
       <label htmlFor={id} className="f6 db mb2">
@@ -18,7 +18,13 @@ const Input = props => {
         aria-describedby={`${name}-desc`}
         className="input-reset db w-100 mb2 pa2 ba b--black-20 br2"
         value={value}
-        onChange={onChange} />
+        onChange={onChange}
+        {...inputProps} />
+        <style jsx>{`
+          input:not([value=""]):invalid {
+            border-color: var(--red);
+          }
+        `}</style>
     </div>
   )
 }
