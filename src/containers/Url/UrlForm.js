@@ -32,7 +32,6 @@ class UrlForm extends React.Component {
     if (!data.message) this.reset()
   }
   onInputChange = ({ target: { name, value } }) => {
-    console.log(name, value)
     this.setState({ [name]: value })
   }
   render() {
@@ -46,8 +45,10 @@ class UrlForm extends React.Component {
             placeholder="https://website.com"
             labelText="URL"
             helperText="Required. Can't shrink a link without a link"
-            type="text"
+            type="url"
             value={url}
+            pattern="https?://.+"
+            required
             onChange={this.onInputChange} />
           <NumberInput
             id="duration"
