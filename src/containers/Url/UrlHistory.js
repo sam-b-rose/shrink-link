@@ -10,7 +10,7 @@ class UrlHistory extends React.Component {
   }
   renderItem = (item, index) => {
     const { selected } = this.props
-    const isExpired = isPast(item.expires)
+    const isExpired = item.expires && isPast(item.expires)
     return (
       <li
         key={item.s}

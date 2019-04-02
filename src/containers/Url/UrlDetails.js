@@ -12,7 +12,6 @@ class UrlDetails extends React.Component {
   state = {
     baseUrl: ''
   }
-
   componentDidMount() {
     this.setState({ baseUrl: window.location.href })
     clipboard = new ClipboardJS('.copy')
@@ -21,11 +20,9 @@ class UrlDetails extends React.Component {
       setTimeout(() => e.trigger.classList.remove(...tooltipClasses), 1500)
     });
   }
-
   componentWillUnmount() {
     clipboard.destroy()
   }
-
   copyLink = (type, helperText, link) => (
     <div className="mb4">
       <div className="flex justify-between mb2">
@@ -53,6 +50,16 @@ class UrlDetails extends React.Component {
     const frameUrl = `${baseUrl}f/${s}`
     const isExpired = isPast(expires)
 
+    const expiresLabel = !expires
+      ? 'Expires'
+      : isExpired
+        ? 'Expired'
+        : 'Expires in';
+
+    const expiresValue = !expires
+      ? '\u2014' // em dash
+      : `${distanceInWordsToNow(expires)}${ isExpired ? ' ago' : ''}`
+
     return s && (
         <div className="mw6 pl3 f4 fw3 lh-copy light-gray">
           <p className="mb4">
@@ -64,19 +71,16 @@ class UrlDetails extends React.Component {
           </div>
           <div className="flex pv3">
             <div className="w-50">
-              <div className="f6 fw6 ttu">
-                { isExpired ? 'Expired' : 'Expires in' }
-              </div>
-              <div>{ `${distanceInWordsToNow(expires)}${ isExpired ? ' ago' : ''}`}</div>
+              <div className="f6 fw6 ttu">{ expiresLabel }</div>
+              <div>{ expiresValue }</div>
             </div>
-            {
-              passcode && (
-                <div className="w-50">
-                  <div className="f6 fw6 ttu">Passcode</div>
-                  <code className="f6 fw3 light-gray">{ passcode }</code>
-                </div>
-              )
-            }
+            <div className="w-50">
+              <div className="f6 fw6 ttu">Passcode</div>
+              { passcode
+                ? <code className="f6 fw3 light-gray">{ passcode }</code>
+                : <span>{ '\u2014' }</span> // em dash
+              }
+            </div>
           </div>
         </div>
       )

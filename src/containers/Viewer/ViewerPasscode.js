@@ -25,6 +25,7 @@ class ViewerPasscode extends React.Component {
           name="attempt"
           labelText="Passcode"
           type="text"
+          required
           value={attempt}
           onChange={this.onInputChange} />
         <Button>Submit</Button>

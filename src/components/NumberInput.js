@@ -14,7 +14,8 @@ const NumberInput = props => {
     // select input props
     unit,
     units,
-    onUnitChange
+    onUnitChange,
+    ...rest
   } = props;
   return (
     <div className="mb3">
@@ -30,14 +31,11 @@ const NumberInput = props => {
             id={id}
             name={name}
             type="number"
-            step="1"
-            min="0"
-            max="100000"
-            placeholder="0"
             aria-describedby={`${name}-desc`}
             className="input-reset w-100 pa2 ba b--black-20 br2"
             value={value}
-            onChange={onChange} />
+            onChange={onChange}
+            {...rest} />
         </div>
         <div className="dib w-75">
           {

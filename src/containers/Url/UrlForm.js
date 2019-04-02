@@ -55,6 +55,10 @@ class UrlForm extends React.Component {
             name="duration"
             labelText="Duration"
             helperText="Place a time limit on your link"
+            step="1"
+            min="0"
+            max="100000"
+            placeholder="–"
             value={duration}
             onChange={this.onInputChange}
             unit={unit}

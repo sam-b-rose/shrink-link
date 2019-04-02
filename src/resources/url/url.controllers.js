@@ -43,7 +43,7 @@ const createUrl = async (req, res) => {
     _id,
     url,
     expires,
-    passcode: passcode.trim()
+    passcode
   });
   await doc.save()
 
@@ -75,7 +75,6 @@ const getUrl = async (req, res) => {
   // Check if valid
   if (doc.expires && isPast(doc.expires)) {
     // Remove & return if not
-    // await Url.deleteOne({ _id })
     return res.status(404).json({ url: null, message: 'URL has expired' })
   }
 
