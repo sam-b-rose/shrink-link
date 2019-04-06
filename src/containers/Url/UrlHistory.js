@@ -13,10 +13,10 @@ class UrlHistory extends React.Component {
     const isExpired = item.expires && isPast(item.expires)
     return (
       <li
-        key={item.s}
-        className={`item relative flex ph2 pv2 ${selected.s === item.s ? 'selected bg-blue white' : 'hover-bg-near-white'}`}>
+        key={item.hash}
+        className={`item relative flex ph2 pv2 ${selected.hash === item.hash ? 'selected bg-blue white' : 'hover-bg-near-white'}`}>
         <label
-          htmlFor={`url-${item.s}`}
+          htmlFor={`url-${item.hash}`}
           className={`w-75 pr2 truncate pointer ${isExpired && 'strike'}`}>
           { item.url }
         </label>
@@ -31,7 +31,7 @@ class UrlHistory extends React.Component {
         <input
           className="dn"
           type="radio"
-          id={`url-${item.s}`}
+          id={`url-${item.hash}`}
           name="selectedUrl"
           value={index}
           onChange={(e) => this.onChange(e, item, index)}/>

@@ -44,10 +44,10 @@ class UrlDetails extends React.Component {
 
   render() {
     const { baseUrl } = this.state
-    const { s, expires, passcode } = this.props
+    const { hash, expires, passcode } = this.props
 
-    const redirectUrl = `${baseUrl}r/${s}`
-    const frameUrl = `${baseUrl}f/${s}`
+    const redirectUrl = `${baseUrl}r/${hash}`
+    const frameUrl = `${baseUrl}f/${hash}`
     const isExpired = isPast(expires)
 
     const expiresLabel = !expires
@@ -60,7 +60,7 @@ class UrlDetails extends React.Component {
       ? '\u2014' // em dash
       : `${distanceInWordsToNow(expires)}${ isExpired ? ' ago' : ''}`
 
-    return s && (
+    return hash && (
         <div className="mw6 pl3 f4 fw3 lh-copy light-gray">
           <p className="mb4">
             Share your shrinked link.

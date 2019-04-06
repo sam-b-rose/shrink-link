@@ -29,12 +29,12 @@ const start = async () => {
     server.use('/api', apiRouter)
 
     // Next.js Routes
-    server.get('/f/:s', (req, res) => {
-      return app.render(req, res, '/viewer', { s: req.params.s, type: 'frame' })
+    server.get('/f/:hash', (req, res) => {
+      return app.render(req, res, '/viewer', { hash: req.params.hash, type: 'frame' })
     })
 
-    server.get('/r/:s', (req, res) => {
-      return app.render(req, res, '/viewer', { s: req.params.s, type: 'redirect' })
+    server.get('/r/:hash', (req, res) => {
+      return app.render(req, res, '/viewer', { hash: req.params.hash, type: 'redirect' })
     })
 
     server.get('*', (req, res) => {

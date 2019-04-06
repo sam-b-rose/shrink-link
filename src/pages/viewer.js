@@ -9,54 +9,39 @@ import api from '~/services/api'
 
 class ViewerPage extends React.Component {
   state = {
-    isValidated: null,
+    targetUrl: '',
+    message: '',
+    hasPasscode: false
   }
-  static async getInitialProps ({ res, query: { s, type } }) {
-    const { url, passcode, message } = await api.decodeUrl({ s })
-    // Send directly to page if no passcode and URL not expired
-    if (!passcode && url && type === 'redirect') res.redirect(url)
-    return { targetUrl: url, passcode, message, type }
+  static async getInitialProps ({ query: { hash, type } }) {
+    return { hash, type }
   }
-  static getDerivedStateFromProps({ passcode }, { isValidated }) {
-    return (isValidated === null)
-      ? { isValidated: passcode === '' }
-      : null
+  async componentDidMount() {
+    const { hash } = this.props
+    const { url, message, hasPasscode } = await api.decodeUrl({ hash })
+    this.setState({ targetUrl: url, message, hasPasscode }, this.redirect)
   }
-  validate = attempt => {
-    const { passcode } = this.props
-    this.setState(
-      { isValidated: passcode === attempt.trim() },
-      this.redirect
-    )
+  validate = async passcode => {
+    const { hash } = this.props
+    const { url, message, hasPasscode } = await api.attemptPasscode({ hash, passcode })
+    this.setState({ targetUrl: url, message, hasPasscode }, this.redirect)
   }
   redirect = () => {
-    const { isValidated } = this.state
-    const { targetUrl, type } = this.props
-    if (type === 'redirect' && isValidated) {
+    const { type } = this.props
+    const { targetUrl } = this.state
+    if (targetUrl && type === 'redirect') {
       window.location.href = targetUrl
     }
   }
   render() {
-    const { isValidated } = this.state
-    const { targetUrl, passcode, message, type } = this.props
+    const { type } = this.props
+    const { targetUrl, message, hasPasscode } = this.state
     return (
       <div className="h-100 flex items-center justify-center">
-      {
-        message
-        ? (<div>{ message }</div>)
-        : (
-           <div>
-             { passcode === '' || isValidated
-               ? (
-                  type === 'frame'
-                    ? <ViewerFrame url={targetUrl}/>
-                    : 'Redirecting...'
-                  )
-               : (<ViewerPasscode validate={this.validate} />)
-             }
-           </div>
-         )
-      }
+        { message && <div>{message}</div> }
+        { hasPasscode && <ViewerPasscode validate={this.validate} /> }
+        { targetUrl && type === 'frame' && <ViewerFrame url={targetUrl}/> }
+        { targetUrl && type === 'redirect' && 'Redirecting...' }
       </div>
     )
   }

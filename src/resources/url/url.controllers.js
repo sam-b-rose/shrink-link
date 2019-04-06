@@ -48,11 +48,11 @@ const createUrl = async (req, res) => {
   await doc.save()
 
   // Convert
-  const s = encode(_id)
+  const hash = encode(_id)
 
   // return encoded string
   res.json({
-    s,
+    hash,
     expires,
   })
 }
@@ -63,23 +63,31 @@ const createUrl = async (req, res) => {
  */
 const getUrl = async (req, res) => {
   // Decode string
-  const { s } = req.params
-  const _id = decode(s)
+  const { hash } = req.params
+  const { passcode } = req.body
+  const _id = decode(hash)
 
   // Get URL from DB
   const doc = await Url.findOne({ _id })
 
   // Not found
-  if (!doc) return res.status(404).json({ url: null, message: 'URL not found' })
+  if (!doc) {
+    return res.status(404).json({ message: 'URL not found' })
+  }
 
   // Check if valid
   if (doc.expires && isPast(doc.expires)) {
     // Remove & return if not
-    return res.status(404).json({ url: null, message: 'URL has expired' })
+    return res.status(404).json({ message: 'URL has expired' })
   }
 
-  const { url, expires, passcode } = doc
-  return res.status(400).json({ url, expires, passcode })
+  // Check for passcode
+  if (doc.passcode && passcode !== doc.passcode) {
+    return res.status(403).json({ hasPasscode: true })
+  }
+
+  const { url } = doc
+  return res.status(200).json({ url })
 }
 
 module.exports = {
