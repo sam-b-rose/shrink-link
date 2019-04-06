@@ -6,15 +6,17 @@ const {
 
 const router = Router()
 
-/* --- Encode / Decode --- */
-// /api/url/encode
+/* --- Encode --- */
+// /api/url
 router
-  .route('/encode')
+  .route('/')
   .post(createUrl)
 
-// /api/url/decode/:string
+/* --- Decode & Passcode --- */
+// /api/url/:hash
 router
-  .route('/decode/:s')
+  .route('/:hash')
   .get(getUrl)
+  .post(getUrl)
 
 module.exports = router

@@ -20,7 +20,7 @@ class IndexPage extends React.Component {
     selectedTab: 0,
     history: [],
     details: {
-      s: '',
+      hash: '',
       expires: ''
     }
   }
@@ -72,7 +72,7 @@ class IndexPage extends React.Component {
                   ShrinkL<span className="fw3">.ink</span>
                 </div>
                 {
-                  details.s
+                  details.hash
                     ? <UrlDetails {...details} />
                     : (
                       <div className="mw6 pl3 f4 fw3 lh-copy light-gray">
