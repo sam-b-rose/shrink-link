@@ -11,7 +11,7 @@
   "scripts": {
     "test": "jest",
     "build": "next build src",
-    "dev": "nodemon --inspect src/index.js",
+    "dev": "nodemon --inspect=0.0.0.0 src/index.js",
     "start": "NODE_ENV=production node src/index.js"
   },
   "dependencies": {
