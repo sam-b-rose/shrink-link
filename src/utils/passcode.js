@@ -25,7 +25,6 @@ const passcodesMatch = (storedPasscodeHash, plaintextPasscode) => {
   return matches;
 }
 
-
 module.exports = {
   encodePasscode,
   passcodesMatch,
