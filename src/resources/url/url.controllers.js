@@ -9,6 +9,7 @@ const addMonths = require('date-fns/add_months')
 const { Url } = require('./url.model')
 const { uid } = require('../../utils/uid')
 const { encode, decode } = require('../../utils/base62')
+const { encodePasscode, passcodesMatch } = require('../../utils/passcode')
 
 const dateActions = {
   addMinutes,
@@ -39,11 +40,12 @@ const createUrl = async (req, res) => {
     : null
 
   // Save
+  const encodedPasscode = encodePasscode(passcode)
   const doc = new Url({
     _id,
     url,
     expires,
-    passcode
+    passcode: encodedPasscode,
   });
   await doc.save()
 
@@ -63,9 +65,9 @@ const createUrl = async (req, res) => {
  */
 const getUrl = async (req, res) => {
   // Decode string
-  const { hash } = req.params
+  const { hash: urlHash } = req.params
   const { passcode } = req.body
-  const _id = decode(hash)
+  const _id = decode(urlHash)
 
   // Get URL from DB
   const doc = await Url.findOne({ _id })
@@ -82,7 +84,8 @@ const getUrl = async (req, res) => {
   }
 
   // Check for passcode
-  if (doc.passcode && passcode !== doc.passcode) {
+  const docHashedPasscode = doc.passcode;
+  if (docHashedPasscode && !passcodesMatch(docHashedPasscode, passcode)) {
     return res.status(403).json({ hasPasscode: true })
   }
 
