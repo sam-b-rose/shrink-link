@@ -45,7 +45,7 @@ class IndexPage extends React.Component {
   }
   onRemoveLink = (e, payload) => {
     const removedLink = payload.data
-    const history = this.state.history.filter(item => item.s !== removedLink.s)
+    const history = this.state.history.filter(item => item.hash !== removedLink.hash)
     this.setState({ history }, this.setStorage)
   }
   readStorage = () => {
