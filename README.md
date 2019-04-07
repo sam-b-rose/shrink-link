@@ -79,5 +79,5 @@ You can also use Docker Compose to run the app and the database. This uses the `
 Run a production build of the application locally.
 
 ```bash
-docker-compose up
+docker-compose -f "docker-compose.yml" up -d --build
 ```
