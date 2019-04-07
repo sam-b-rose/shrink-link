@@ -20,11 +20,6 @@ const Input = props => {
         value={value}
         onChange={onChange}
         {...inputProps} />
-        <style jsx>{`
-          input:not([value=""]):invalid {
-            border-color: var(--red);
-          }
-        `}</style>
     </div>
   )
 }

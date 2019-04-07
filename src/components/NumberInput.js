@@ -57,13 +57,6 @@ const NumberInput = props => {
           }
         </div>
       </div>
-      <style jsx>{`
-        input[type=number]::-webkit-inner-spin-button,
-        input[type=number]::-webkit-outer-spin-button {
-            appearance: none;
-            margin: 0;
-        }
-      `}</style>
     </div>
   )
 }
