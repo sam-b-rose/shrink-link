@@ -97,7 +97,7 @@ class IndexPage extends React.Component {
             </svg>
           </div>
           <div className="flex w-40 h-100 overflow-auto z-1 bg-white">
-            <div className="w-100 mw6 center pt6">
+            <div className="w-100 measure center pt6">
               <Tabs selected={selectedTab} items={tabItems} onSelect={this.onSelectTab}/>
               {
                 selectedTab === 0

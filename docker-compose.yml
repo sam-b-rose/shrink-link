@@ -10,7 +10,6 @@ services:
     build: .
     environment:
       - NODE_ENV=production
-      - BASE_URL=http://0.0.0.0:3000
       - MONGO_URL=mongodb://mongo:27017/shrink-link
     ports:
       - 3000:3000
