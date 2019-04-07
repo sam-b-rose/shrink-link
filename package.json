@@ -44,6 +44,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.10.0",
     "jest": "^24.1.0",
+    "next-purgecss": "^3.0.1",
     "node-sass": "^4.11.0",
     "nodemon": "^1.18.10",
     "pkg": "^4.3.7",

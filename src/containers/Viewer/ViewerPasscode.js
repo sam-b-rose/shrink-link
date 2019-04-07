@@ -28,7 +28,7 @@ class ViewerPasscode extends React.Component {
           required
           value={attempt}
           onChange={this.onInputChange} />
-        <Button>Submit</Button>
+        <Button type="submit">Submit</Button>
       </form>
     )
   }
