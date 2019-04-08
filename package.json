@@ -1,6 +1,6 @@
 {
   "name": "shrink-link",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "license": "MIT",
   "author": "Sam Rose",
   "main": "src/index.js",
