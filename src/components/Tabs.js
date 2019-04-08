@@ -16,7 +16,7 @@ export default class Tabs extends React.Component {
   render() {
     const { items } = this.props
     return (
-      <ul className="flex list mb5 pl0">
+      <ul className="flex list mb4 pl0">
         { items.map(this.tabItem) }
       </ul>
     )

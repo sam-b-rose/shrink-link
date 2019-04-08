@@ -37,8 +37,8 @@ class UrlForm extends React.Component {
   render() {
     const { url, duration, unit, passcode } = this.state
     return (
-      <form onSubmit={this.submit}>
-        <div className="mb4">
+      <form className="pt2" onSubmit={this.submit}>
+        <div className="mb4-l mb2">
           <Input
             id="url"
             name="url"

@@ -21,7 +21,7 @@ const NumberInput = props => {
     <div className="mb3">
       <label htmlFor={id} className="f6 db mb2">
         <span className="fw6 ttu gray">{labelText}</span>
-        <span className="fr i black-60">
+        <span className="db-l dn fr i black-60">
           {helperText}
         </span>
       </label>
