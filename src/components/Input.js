@@ -16,6 +16,10 @@ const Input = props => {
         placeholder={placeholder}
         type={type}
         aria-describedby={`${name}-desc`}
+        autoCapitalize="off"
+        autoCorrect="off"
+        autoComplete="off"
+        spellCheck="false"
         className="input-reset db w-100 mb2 pa2 ba b--black-20 br2"
         value={value}
         onChange={onChange}

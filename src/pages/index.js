@@ -64,7 +64,7 @@ class IndexPage extends React.Component {
     return (
       <div className="h-100">
         <div className="flex flex-column flex-row-l h-100 overflow-hidden-l overflow-auto">
-          <div className="relative flex w-60-l h-100-l bg-blue">
+          <div className="relative flex-nogrow flex w-60-l h-100-l bg-blue">
             <div className="w-100 measure center mb4 pt6-l pa4-l pa3">
               <div className="mb4-l">
                 <div className="flex items-center mb4-l f1-l f3 fw6 near-white">
@@ -107,7 +107,7 @@ class IndexPage extends React.Component {
               <path d="M375 52.5H0V22.924s88 33.578 187.5 0c99.5-33.579 187.5 0 187.5 0V52.5z" fill="var(--white)" filter="url(#wave-h)"/><defs><filter id="wave-h" x="-4" y="0" width="383" height="52.5" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB"><feFlood floodOpacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/><feOffset dy="-4"/><feGaussianBlur stdDeviation="2"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/><feBlend in2="BackgroundImageFix" result="effect1_dropShadow"/><feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape"/></filter></defs>
             </svg>
           </div>
-          <div className="flex w-40-l h-100-l overflow-auto-l z-1 bg-white">
+          <div className="flex flex-nogrow w-40-l h-100-l overflow-auto-l z-1 bg-white">
             <div className="w-100 measure center pt6-l pa4 db-l dn">
               <Tabs selected={selectedTab} items={tabItems} onSelect={this.onSelectTab}/>
               {
