@@ -7,11 +7,9 @@ const Button = props => {
     onClick = () => {},
     ...remainingProps
   } = props;
-  const base = 'dib link mb2 ph3 pv2 br2 bn bg-blue white f6 pointer shadow-button'
-  const hover = 'dim'
   return (
     <button
-      className={`${base} ${hover} ${className}`}
+      className={`btn mb2 ph3 pv2 br2 f6 link ${className}`}
       onClick={onClick}
       { ...remainingProps }>
       {children}

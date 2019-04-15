@@ -6,8 +6,8 @@ import { render } from 'react-testing-library'
 import UrlForm from '../UrlForm'
 
 describe('UrlForm', () => {
-  it('shows the URL label', () => {
+  it('renders the URL label', () => {
     const { getByText } = render(<UrlForm />)
-    expect(getByText(/URL/i)).not.toBeNull()
+    expect(getByText(/URL/)).not.toBeNull()
   })
 })

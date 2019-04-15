@@ -1,40 +1,21 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600');
 @import '~tachyons/src/colors';
-@import './tooltip';
+
+@import './partials/button';
+@import './partials/font';
+@import './partials/input';
+@import './partials/tooltip';
 
 html,
 body,
 #__next,
 .layout {
-  height: 100%;
+  position: relative;
   overflow: hidden;
+  height: 100%;
+  margin: 0;
+  padding: 0;
   color: var(--black-70);
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
   -webkit-overflow-scrolling: touch;
 }
 
-input,
-textarea,
-select {
-  color: var(--black-80);
-}
-
-input:not([value=""]):invalid {
-  border-color: var(--red);
-}
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    appearance: none;
-    margin: 0;
-}
-
-.flex-nogrow {
-  flex: 0 0 auto;
-}
-
-.shadow-button {
-  box-shadow: 0 2px 0 var(--dark-blue);
-}

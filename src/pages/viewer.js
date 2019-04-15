@@ -1,14 +1,12 @@
 import React from 'react'
-
-import {
-  ViewerFrame,
-  ViewerPasscode
-} from '~/containers/Viewer'
-
+import Input from '~/components/Input'
+import Button from '~/components/Button'
+import Frame from '~/components/Frame'
 import api from '~/services/api'
 
 class ViewerPage extends React.Component {
   state = {
+    attempt: '',
     targetUrl: '',
     message: '',
     hasPasscode: false
@@ -21,8 +19,13 @@ class ViewerPage extends React.Component {
     const { url, message, hasPasscode } = await api.decodeUrl({ hash })
     this.setState({ targetUrl: url, message, hasPasscode }, this.redirect)
   }
-  validate = async passcode => {
+  onInputChange = ({ target: { name, value } }) => {
+    this.setState({ [name]: value })
+  }
+  validate = async (e) => {
+    e.preventDefault()
     const { hash } = this.props
+    const { attempt: passcode } = this.state
     const { url, message, hasPasscode } = await api.attemptPasscode({ hash, passcode })
     this.setState({ targetUrl: url, message, hasPasscode }, this.redirect)
   }
@@ -33,14 +36,27 @@ class ViewerPage extends React.Component {
       window.location.href = targetUrl
     }
   }
+  renderPasscodeForm = () => (
+    <form onSubmit={this.validate}>
+      <Input
+        id="attempt"
+        name="attempt"
+        labelText="Passcode"
+        type="text"
+        required
+        value={this.state.attempt}
+        onChange={this.onInputChange} />
+      <Button type="submit">Submit</Button>
+    </form>
+  )
   render() {
     const { type } = this.props
     const { targetUrl, message, hasPasscode } = this.state
     return (
       <div className="h-100 flex items-center justify-center">
         { message && <div>{message}</div> }
-        { hasPasscode && <ViewerPasscode validate={this.validate} /> }
-        { targetUrl && type === 'frame' && <ViewerFrame url={targetUrl}/> }
+        { hasPasscode && this.renderPasscodeForm() }
+        { targetUrl && type === 'frame' && <Frame url={targetUrl}/> }
         { targetUrl && type === 'redirect' && 'Redirecting...' }
       </div>
     )

@@ -1,0 +1,17 @@
+.btn {
+  display: inline-block;
+  transition: box-shadow background-color 0.15s ease-in-out;
+  cursor: pointer;
+  box-shadow: 0 2px 0 var(--dark-blue);
+  border: none;
+  background-color: var(--blue);
+  color: white;
+
+  &:hover,
+  &:active,
+  &:focus {
+    outline: none;
+    background-color: var(--dark-blue);
+    box-shadow: 0 2px 0 var(--navy);
+  }
+}

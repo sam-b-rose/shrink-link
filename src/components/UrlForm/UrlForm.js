@@ -2,7 +2,7 @@ import React from 'react'
 
 import Button from '~/components/Button'
 import Input from '~/components/Input'
-import NumberInput from '~/components/NumberInput'
+import UnitInput from '~/components/UnitInput'
 
 import api from '~/services/api'
 
@@ -50,7 +50,7 @@ class UrlForm extends React.Component {
             pattern="https?://.+"
             required
             onChange={this.onInputChange} />
-          <NumberInput
+          <UnitInput
             id="duration"
             name="duration"
             labelText="Duration"
