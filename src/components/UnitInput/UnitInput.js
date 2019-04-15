@@ -1,7 +1,7 @@
 import React from 'react'
 import capitalize from 'lodash/capitalize'
 
-const NumberInput = props => {
+const UnitInput = props => {
   const {
     // text props
     labelText,
@@ -61,4 +61,4 @@ const NumberInput = props => {
   )
 }
 
-export default NumberInput
+export default UnitInput

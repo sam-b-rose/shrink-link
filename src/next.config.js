@@ -13,7 +13,7 @@ const purgeCssConfig = isDev
       'containers/**/*'
     ],
     purgeCss: {
-      whitelist: () => ['__next']
+      whitelist: () => ['html', '__next']
     }
   })
 

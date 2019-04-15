@@ -9,7 +9,10 @@ export default class Tabs extends React.Component {
     const isSelected = index === this.props.selected
     return (
       <li key={index} className={`mr2 ${isSelected && 'bb bw1 b--blue blue'}`}>
-        <button className={`link ph2 pv2 bn bg-transparent silver pointer ${isSelected && 'blue'}`} onClick={(e) => this.onClick(e, index)}>{item}</button>
+        <button
+          type="button"
+          className={`link ph2 pv2 bn bg-transparent silver hover-dark-blue pointer ${isSelected ? 'blue' : ''}`}
+          onClick={(e) => this.onClick(e, index)}>{item}</button>
       </li>
     )
   }

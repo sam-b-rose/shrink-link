@@ -3,7 +3,7 @@ import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import isPast from 'date-fns/is_past'
 import ClipboardJS from 'clipboard'
 
-import CopySVG from '~/assets/images/copy.svg'
+import CopySVG from '~/assets/svg/copy.svg'
 
 let clipboard = null
 const tooltipClasses = ['tooltipped', 'tooltipped-s', 'tooltipped-no-delay']
