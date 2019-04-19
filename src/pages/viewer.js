@@ -1,7 +1,8 @@
 import React from 'react'
-import Input from '~/components/Input'
 import Button from '~/components/Button'
+import Input from '~/components/Input'
 import Frame from '~/components/Frame'
+import Notification from '~/components/Notification'
 import api from '~/services/api'
 
 class ViewerPage extends React.Component {
@@ -9,7 +10,8 @@ class ViewerPage extends React.Component {
     attempt: '',
     targetUrl: '',
     message: '',
-    hasPasscode: false
+    hasPasscode: false,
+    showNotification: false
   }
   static async getInitialProps ({ query: { hash, type } }) {
     return { hash, type }
@@ -20,14 +22,19 @@ class ViewerPage extends React.Component {
     this.setState({ targetUrl: url, message, hasPasscode }, this.redirect)
   }
   onInputChange = ({ target: { name, value } }) => {
-    this.setState({ [name]: value })
+    this.setState({ [name]: value, showNotification: false })
   }
   validate = async (e) => {
     e.preventDefault()
     const { hash } = this.props
     const { attempt: passcode } = this.state
     const { url, message, hasPasscode } = await api.attemptPasscode({ hash, passcode })
-    this.setState({ targetUrl: url, message, hasPasscode }, this.redirect)
+    this.setState({
+      message,
+      hasPasscode,
+      targetUrl: url,
+      showNotification: !url
+    }, this.redirect)
   }
   redirect = () => {
     const { type } = this.props
@@ -37,7 +44,14 @@ class ViewerPage extends React.Component {
     }
   }
   renderPasscodeForm = () => (
-    <form onSubmit={this.validate}>
+    <form className="relative" onSubmit={this.validate}>
+      <Notification
+        className="absolute top-0 left-0 right-0"
+        style={{ transform: 'translateY(calc(-100% - 1rem))'}}
+        type="error"
+        active={this.state.showNotification}>
+        Incorrect
+      </Notification>
       <Input
         id="attempt"
         name="attempt"

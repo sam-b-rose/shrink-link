@@ -8,7 +8,7 @@ const Icons = {
 }
 
 const Notification = (props) => {
-  const { type='success', active, onDismiss, children, className } = props
+  const { type='success', active, onDismiss, children, className='', style={} } = props
   const [
     IconSVG=SuccessSVG,
     colorClass='light-green'
@@ -17,7 +17,7 @@ const Notification = (props) => {
   return (
     <div
       className={`flex items-center justify-between ph3 pv2 br2 bg-near-black near-white ${activeClass} ${className}`}
-      style={{ transition: 'opacity 0.15s ease-in' }}>
+      style={{ transition: 'opacity 0.15s ease-in', ...style }}>
       <span className="flex items-center flex-none mr2" role="img" aria-label="notification icon">
         <IconSVG className={colorClass} />
       </span>
