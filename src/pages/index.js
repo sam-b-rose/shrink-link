@@ -1,4 +1,5 @@
 import React from 'react'
+import Notification from '~/components/Notification'
 import UrlDetails from '~/components/UrlDetails'
 import UrlForm from '~/components/UrlForm'
 import UrlHistory from '~/components/UrlHistory'
@@ -12,21 +13,42 @@ const tabItems = [
   'History'
 ]
 class IndexPage extends React.Component {
-  state = {
+  initialState = {
+    notificationTimeout: null,
+    showNotification: false,
+    notification: {},
     selectedTab: 0,
     history: [],
     details: {
       hash: '',
       expires: ''
-    }
+    },
+  }
+  state = {
+    ...this.initialState
   }
   componentDidMount() {
     const history = this.readStorage()
     this.setState({ history })
   }
-  onSubmit = (newUrl) => {
+  onSubmit = (data) => {
+    const hasErrorMessage = Boolean(data.message)
+    let notification = {
+      type: hasErrorMessage ? 'error' : 'success',
+      message: hasErrorMessage ? data.message : 'Your link has been shrunk!'
+    }
     this.setState(
-      ({ history }) => ({ details: newUrl, history: [newUrl, ...history]}),
+      ({ history: prevHistory }) => {
+        const details = hasErrorMessage ? null : data
+        const history = hasErrorMessage ? prevHistory : [data, ...prevHistory]
+        return {
+          details,
+          history,
+          notification,
+          showNotification: true,
+          notificationTimeout: setTimeout(() => this.onDismissNotification(), 3000)
+        }
+      },
       this.setStorage
     )
   }
@@ -44,6 +66,12 @@ class IndexPage extends React.Component {
     const history = this.state.history.filter(item => item.hash !== removedLink.hash)
     this.setState({ history }, this.setStorage)
   }
+  onDismissNotification = () => {
+    this.setState(({ notificationTimeout }) => ({
+      showNotification: false,
+      notificationTimeout: clearTimeout(notificationTimeout),
+    }))
+  }
   readStorage = () => {
     const data = localStorage.getItem(URL_HISTORY)
     return data ? JSON.parse(data).slice(0, MAX_HISTORY) : []
@@ -56,7 +84,7 @@ class IndexPage extends React.Component {
     )
   }
   render() {
-    const { selectedTab, details, history } = this.state
+    const { selectedTab, details, history, notification, showNotification } = this.state
     return (
       <div className="h-100">
         <div className="flex flex-column flex-row-l h-100 overflow-hidden-l overflow-auto">
@@ -104,7 +132,14 @@ class IndexPage extends React.Component {
             </svg>
           </div>
           <div className="flex flex-none w-40-l h-100-l overflow-auto-l z-1 bg-white">
-            <div className="w-100 measure center pt6-l pa4 db-l dn">
+            <div className="relative w-100 measure center pt6-l pa4 db-l dn">
+              <Notification
+                className="absolute top-0 left-0 right-0 mt5 mh4"
+                type={notification.type}
+                active={showNotification}
+                onDismiss={this.onDismissNotification}>
+                { notification.message}
+              </Notification>
               <Tabs selected={selectedTab} items={tabItems} onSelect={this.onSelectTab}/>
               {
                 selectedTab === 0
@@ -117,6 +152,13 @@ class IndexPage extends React.Component {
               }
             </div>
             <div className="w-100 measure center pa3 mb4 dn-l">
+              <Notification
+                className="absolute top-1 left-1 right-1 measure center"
+                type={notification.type}
+                active={showNotification}
+                onDismiss={this.onDismissNotification}>
+                { notification.message}
+              </Notification>
               <div className="mb5">
                 <h2>Create</h2>
                 <UrlForm onSubmit={this.onSubmit}/>
