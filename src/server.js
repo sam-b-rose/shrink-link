@@ -1,4 +1,5 @@
 const express = require('express')
+const consola = require('consola')
 const { json, urlencoded } = require('body-parser')
 const morgan = require('morgan')
 const next = require('next')
@@ -42,10 +43,10 @@ const start = async () => {
     })
 
     server.listen(config.port, () => {
-      console.log(`Read on http://localhost:${config.port}`)
+      consola.success(`Read on http://localhost:${config.port}`)
     })
   } catch (e) {
-    console.error(e)
+    consola.error(e)
   }
 }
 
