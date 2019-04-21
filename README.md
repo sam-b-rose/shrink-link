@@ -2,6 +2,9 @@
 
 Shrink long URLs – they exist only as long as you need and can be passcode protected.
 
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![Storybook](https://cdn.jsdelivr.net/gh/storybooks/brand@master/badge/badge-storybook.svg)](https://samrose3.github.io/shrink-link)
+
 ## Features
 
 - Shrink absurdly long URLs into small, sharable ones.
