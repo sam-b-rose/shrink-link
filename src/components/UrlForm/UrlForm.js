@@ -6,24 +6,20 @@ import UnitInput from '~/components/UnitInput'
 
 import api from '~/services/api'
 
-const units = [
-  'minutes',
-  'days',
-  'months',
-]
+const units = ['minutes', 'days', 'months']
 
 class UrlForm extends React.Component {
   initialState = {
     url: '',
     duration: '',
     unit: units[0],
-    passcode: ''
+    passcode: '',
   }
   state = { ...this.initialState }
   reset = () => {
     this.setState({ ...this.initialState })
   }
-  submit = async (e) => {
+  submit = async e => {
     e.preventDefault()
     const { url, passcode } = this.state
     const payload = this.state
@@ -49,7 +45,8 @@ class UrlForm extends React.Component {
             value={url}
             pattern="https?://.+"
             required
-            onChange={this.onInputChange} />
+            onChange={this.onInputChange}
+          />
           <UnitInput
             id="duration"
             name="duration"
@@ -63,7 +60,8 @@ class UrlForm extends React.Component {
             onChange={this.onInputChange}
             unit={unit}
             units={units}
-            onUnitChange={this.onInputChange} />
+            onUnitChange={this.onInputChange}
+          />
           <Input
             id="passcode"
             name="passcode"
@@ -72,7 +70,8 @@ class UrlForm extends React.Component {
             helperText="Protect your link"
             type="text"
             value={passcode}
-            onChange={this.onInputChange} />
+            onChange={this.onInputChange}
+          />
         </div>
         <Button type="submit">Shrink</Button>
       </form>

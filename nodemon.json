@@ -1,5 +1,6 @@
 {
   "restartable": "rs",
+  "delay": "2500",
   "ignore": [
     ".git",
     "node_modules/**/node_modules",
@@ -16,11 +17,10 @@
   },
   "runOnChangeOnly": false,
   "watch": [
-    "src/**/*.js",
-    "src/**/*.css"
+    "src/**/*.js"
   ],
   "env": {
     "NODE_ENV": "development"
   },
-  "ext": "js,scss"
+  "ext": "js"
 }

@@ -11,17 +11,18 @@ export default class Tabs extends React.Component {
       <li key={index} className={`mr2 ${isSelected && 'bb bw1 b--blue blue'}`}>
         <button
           type="button"
-          className={`link ph2 pv2 bn bg-transparent silver hover-dark-blue pointer ${isSelected ? 'blue' : ''}`}
-          onClick={(e) => this.onClick(e, index)}>{item}</button>
+          className={`link ph2 pv2 bn bg-transparent silver hover-dark-blue pointer ${
+            isSelected ? 'blue' : ''
+          }`}
+          onClick={e => this.onClick(e, index)}
+        >
+          {item}
+        </button>
       </li>
     )
   }
   render() {
     const { items } = this.props
-    return (
-      <ul className="flex list mb4 pl0">
-        { items.map(this.tabItem) }
-      </ul>
-    )
+    return <ul className="flex list mb4 pl0">{items.map(this.tabItem)}</ul>
   }
 }

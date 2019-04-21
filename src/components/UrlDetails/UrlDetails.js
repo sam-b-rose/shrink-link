@@ -10,7 +10,7 @@ const tooltipClasses = ['tooltipped', 'tooltipped-s', 'tooltipped-no-delay']
 
 class UrlDetails extends React.Component {
   state = {
-    baseUrl: ''
+    baseUrl: '',
   }
   componentDidMount() {
     this.setState({ baseUrl: window.location.href })
@@ -18,7 +18,7 @@ class UrlDetails extends React.Component {
     clipboard.on('success', function(e) {
       e.trigger.classList.add(...tooltipClasses)
       setTimeout(() => e.trigger.classList.remove(...tooltipClasses), 1500)
-    });
+    })
   }
   componentWillUnmount() {
     clipboard.destroy()
@@ -30,13 +30,19 @@ class UrlDetails extends React.Component {
         <span className="f7 i">{helperText}</span>
       </div>
       <div className="flex justify-between">
-        <a className="link washed-blue" href={link}>{link}</a>
+        <a className="link washed-blue" href={link}>
+          {link}
+        </a>
         <button
           className="copy link bn bg-transparent pointer near-white f6 nowrap"
           aria-label="Copied!"
           onClick={e => e.target.focus()}
-          data-clipboard-text={link}>
-          Copy <span className="ml2"><CopySVG /></span>
+          data-clipboard-text={link}
+        >
+          Copy{' '}
+          <span className="ml2">
+            <CopySVG />
+          </span>
         </button>
       </div>
     </div>
@@ -50,37 +56,37 @@ class UrlDetails extends React.Component {
     const frameUrl = `${baseUrl}f/${hash}`
     const isExpired = isPast(expires)
 
-    const expiresLabel = !expires
-      ? 'Expires'
-      : isExpired
-        ? 'Expired'
-        : 'Expires in';
+    const expiresLabel = !expires ? 'Expires' : isExpired ? 'Expired' : 'Expires in'
 
     const expiresValue = !expires
       ? '\u2014' // em dash
-      : `${distanceInWordsToNow(expires)}${ isExpired ? ' ago' : ''}`
+      : `${distanceInWordsToNow(expires)}${isExpired ? ' ago' : ''}`
 
-    return hash && (
+    return (
+      hash && (
         <div className="mw6 pl3 f4-l f6 fw3 lh-copy light-gray">
           <div className="mb4-l mb2 pv3 bb b--white-30">
-            { this.copyLink('redirect', 'Go directly to link', redirectUrl) }
-            { this.copyLink('frame', 'Hide in an iframe', frameUrl) }
+            {this.copyLink('redirect', 'Go directly to link', redirectUrl)}
+            {this.copyLink('frame', 'Hide in an iframe', frameUrl)}
           </div>
           <div className="flex pv3-l pv2">
             <div className="w-50">
-              <div className="f6 fw6 ttu">{ expiresLabel }</div>
-              <div>{ expiresValue }</div>
+              <div className="f6 fw6 ttu">{expiresLabel}</div>
+              <div>{expiresValue}</div>
             </div>
             <div className="w-50">
               <div className="f6 fw6 ttu">Passcode</div>
-              { passcode
-                ? <code className="f6-l f7 fw3 light-gray">{ passcode }</code>
-                : <span>{ '\u2014' }</span> // em dash
+              {passcode ? (
+                <code className="f6-l f7 fw3 light-gray">{passcode}</code>
+              ) : (
+                <span>{'\u2014'}</span>
+              ) // em dash
               }
             </div>
           </div>
         </div>
       )
+    )
   }
 }
 

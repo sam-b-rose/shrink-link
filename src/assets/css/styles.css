@@ -1,8 +1,5 @@
 @import "tachyons/css/tachyons.min";
 @import "tachyons/src/colors";
-
 @import "./partials/base";
 @import "./partials/font";
 @import "./partials/tooltip";
-
-

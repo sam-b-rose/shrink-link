@@ -11,9 +11,9 @@ class ViewerPage extends React.Component {
     targetUrl: '',
     message: '',
     hasPasscode: false,
-    showNotification: false
+    showNotification: false,
   }
-  static async getInitialProps ({ query: { hash, type } }) {
+  static async getInitialProps({ query: { hash, type } }) {
     return { hash, type }
   }
   async componentDidMount() {
@@ -24,17 +24,20 @@ class ViewerPage extends React.Component {
   onInputChange = ({ target: { name, value } }) => {
     this.setState({ [name]: value, showNotification: false })
   }
-  validate = async (e) => {
+  validate = async e => {
     e.preventDefault()
     const { hash } = this.props
     const { attempt: passcode } = this.state
     const { url, message, hasPasscode } = await api.attemptPasscode({ hash, passcode })
-    this.setState({
-      message,
-      hasPasscode,
-      targetUrl: url,
-      showNotification: !url
-    }, this.redirect)
+    this.setState(
+      {
+        message,
+        hasPasscode,
+        targetUrl: url,
+        showNotification: !url,
+      },
+      this.redirect
+    )
   }
   redirect = () => {
     const { type } = this.props
@@ -47,9 +50,10 @@ class ViewerPage extends React.Component {
     <form className="relative" onSubmit={this.validate}>
       <Notification
         className="absolute top-0 left-0 right-0"
-        style={{ transform: 'translateY(calc(-100% - 1rem))'}}
+        style={{ transform: 'translateY(calc(-100% - 1rem))' }}
         type="error"
-        active={this.state.showNotification}>
+        active={this.state.showNotification}
+      >
         Incorrect
       </Notification>
       <Input
@@ -59,7 +63,8 @@ class ViewerPage extends React.Component {
         type="text"
         required
         value={this.state.attempt}
-        onChange={this.onInputChange} />
+        onChange={this.onInputChange}
+      />
       <Button type="submit">Submit</Button>
     </form>
   )
@@ -68,10 +73,10 @@ class ViewerPage extends React.Component {
     const { targetUrl, message, hasPasscode } = this.state
     return (
       <div className="h-100 flex items-center justify-center">
-        { message && <div>{message}</div> }
-        { hasPasscode && this.renderPasscodeForm() }
-        { targetUrl && type === 'frame' && <Frame url={targetUrl}/> }
-        { targetUrl && type === 'redirect' && 'Redirecting...' }
+        {message && <div>{message}</div>}
+        {hasPasscode && this.renderPasscodeForm()}
+        {targetUrl && type === 'frame' && <Frame url={targetUrl} />}
+        {targetUrl && type === 'redirect' && 'Redirecting...'}
       </div>
     )
   }

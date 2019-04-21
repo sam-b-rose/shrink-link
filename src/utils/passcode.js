@@ -1,4 +1,4 @@
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcryptjs')
 
 /**
  * @param {String} passcode - plaintext passcode to be encrypted
@@ -6,10 +6,10 @@ const bcrypt = require('bcryptjs');
  * @return {String} hashed passcode
  */
 const encodePasscode = (passcode, saltRounds = 10) => {
-  if (!passcode) return '';
-  const salt = bcrypt.genSaltSync(saltRounds);
-  const passHash = bcrypt.hashSync(passcode, salt);
-  return passHash;
+  if (!passcode) return ''
+  const salt = bcrypt.genSaltSync(saltRounds)
+  const passHash = bcrypt.hashSync(passcode, salt)
+  return passHash
 }
 
 /**
@@ -19,10 +19,10 @@ const encodePasscode = (passcode, saltRounds = 10) => {
  * @return {Boolean} whether or not storedPasscodeHash is hashed version of plaintextPasscode
  */
 const passcodesMatch = (storedPasscodeHash, plaintextPasscode) => {
-  if (!plaintextPasscode || !storedPasscodeHash) return false;
+  if (!plaintextPasscode || !storedPasscodeHash) return false
 
-  const matches = bcrypt.compareSync(plaintextPasscode, storedPasscodeHash);
-  return matches;
+  const matches = bcrypt.compareSync(plaintextPasscode, storedPasscodeHash)
+  return matches
 }
 
 module.exports = {
