@@ -102,11 +102,11 @@ class IndexPage extends React.Component {
             <svg
               className="db-l dn absolute top-0 right--1"
               height="100%"
-              width="10vw"
+              width="15vw"
               viewBox="0 0 136 900"
               preserveAspectRatio="none"
               xmlns="http://www.w3.org/2000/svg"
-              style={{ maxWidth: '120px' }}
+              style={{ maxWidth: '160px' }}
             >
               <path
                 d="M128 0v900H65.622s91.401-211.2 0-450c-91.402-238.8 0-450 0-450H128z"
@@ -136,7 +136,7 @@ class IndexPage extends React.Component {
             <svg
               className="dn-l absolute bottom--1"
               width="100%"
-              height="53"
+              height="60"
               viewBox="0 0 375 53"
               preserveAspectRatio="none"
               xmlns="http://www.w3.org/2000/svg"
