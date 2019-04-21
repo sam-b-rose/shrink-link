@@ -15,7 +15,9 @@
     "build": "next build src",
     "dev": "nodemon --inspect=0.0.0.0 src/index.js",
     "start": "NODE_ENV=production node src/index.js",
-    "storybook": "start-storybook"
+    "storybook": "start-storybook",
+    "storybook:build": "build-storybook",
+    "deploy:book": "build-storybook && push-dir --dir=storybook-static --branch=gh-pages && rimraf storybook-static"
   },
   "husky": {
     "hooks": {
@@ -65,7 +67,9 @@
     "nodemon": "^1.18.10",
     "pkg": "^4.3.7",
     "prettier": "^1.14.2",
-    "react-testing-library": "^6.0.0"
+    "push-dir": "^0.4.1",
+    "react-testing-library": "^6.0.0",
+    "rimraf": "^2.6.3"
   },
   "nodemonConfig": {
     "delay": "2500"
