@@ -16,7 +16,7 @@ const dateActions = {
   addHours,
   addDays,
   addWeeks,
-  addMonths
+  addMonths,
 }
 
 /**
@@ -35,9 +35,7 @@ const addTime = (duration, unit) => {
 const createUrl = async (req, res) => {
   const { url, duration, unit, passcode } = req.body
   const _id = uid()
-  const expires = duration
-    ? addTime(duration, unit)
-    : null
+  const expires = duration ? addTime(duration, unit) : null
 
   // Save
   const encodedPasscode = encodePasscode(passcode)
@@ -46,7 +44,7 @@ const createUrl = async (req, res) => {
     url,
     expires,
     passcode: encodedPasscode,
-  });
+  })
   await doc.save()
 
   // Convert
@@ -84,7 +82,7 @@ const getUrl = async (req, res) => {
   }
 
   // Check for passcode
-  const docHashedPasscode = doc.passcode;
+  const docHashedPasscode = doc.passcode
   if (docHashedPasscode && !passcodesMatch(docHashedPasscode, passcode)) {
     return res.status(403).json({ hasPasscode: true })
   }
@@ -95,5 +93,5 @@ const getUrl = async (req, res) => {
 
 module.exports = {
   createUrl,
-  getUrl
+  getUrl,
 }

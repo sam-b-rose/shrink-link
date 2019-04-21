@@ -19,14 +19,12 @@ const UnitInput = props => {
     units,
     onUnitChange,
     ...rest
-  } = props;
+  } = props
   return (
     <div className="mb3">
       <label htmlFor={id} className="f6 db mb2">
         <span className="fw6 ttu gray">{labelText}</span>
-        <span className="db-l dn fr i black-60">
-          {helperText}
-        </span>
+        <span className="db-l dn fr i black-60">{helperText}</span>
       </label>
       <div className="w-100 mb2">
         <div className="dib w-25 pr2">
@@ -38,26 +36,26 @@ const UnitInput = props => {
             className="input-reset w-100 pa2 ba b--black-20 br2"
             value={value}
             onChange={onChange}
-            {...rest} />
+            {...rest}
+          />
         </div>
         <div className="dib w-75">
-          {
-            units ? (
-              <select
-                id="unit"
-                name="unit"
-                className="input-reset w-100 pa2 ba b--black-20 br2 bg-white"
-                value={unit}
-                onChange={onUnitChange}
-                onBlur={onUnitChange}>
-                {
-                  units.map((u, i) => (
-                  <option key={i} value={u}>{capitalize(u)}</option>
-                  ))
-                }
-              </select>
-            ) : null
-          }
+          {units ? (
+            <select
+              id="unit"
+              name="unit"
+              className="input-reset w-100 pa2 ba b--black-20 br2 bg-white"
+              value={unit}
+              onChange={onUnitChange}
+              onBlur={onUnitChange}
+            >
+              {units.map((u, i) => (
+                <option key={i} value={u}>
+                  {capitalize(u)}
+                </option>
+              ))}
+            </select>
+          ) : null}
         </div>
       </div>
     </div>

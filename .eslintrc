@@ -21,14 +21,21 @@
     "prettier/react"
   ],
   "rules": {
+    "no-console": 1,
     "react/prop-types": 0,
     "jsx-a11y/label-has-for": 0,
-    "no-console": 1
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true
+      }
+    ]
   },
   "plugins": [
     "react",
     "import",
-    "jsx-a11y"
+    "jsx-a11y",
+    "prettier"
   ],
   "settings": {
     "react": {

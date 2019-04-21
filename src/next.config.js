@@ -6,16 +6,13 @@ const isDev = process.env.NODE_ENV !== 'production'
 const purgeCssConfig = isDev
   ? {}
   : withPurgeCss({
-    purgeCssPaths: [
-      'pages/**/*',
-      'components/**/*'
-    ],
-    purgeCss: {
-      whitelist: () => ['html', '__next']
-    }
-  })
+      purgeCssPaths: ['pages/**/*', 'components/**/*'],
+      purgeCss: {
+        whitelist: () => ['html', '__next'],
+      },
+    })
 
 module.exports = withCss({
   dir: './src',
-  ...purgeCssConfig
+  ...purgeCssConfig,
 })

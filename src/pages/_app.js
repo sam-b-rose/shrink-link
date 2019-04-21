@@ -3,18 +3,14 @@ import App, { Container } from 'next/app'
 import '~/assets/css/styles.css'
 
 class Layout extends React.Component {
-  render () {
+  render() {
     const { children } = this.props
-    return (
-      <div className="layout">
-        {children}
-      </div>
-    )
+    return <div className="layout">{children}</div>
   }
 }
 
 export default class MyApp extends App {
-  render () {
+  render() {
     const { Component, pageProps } = this.props
     return (
       <Container>

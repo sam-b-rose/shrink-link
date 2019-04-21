@@ -8,7 +8,7 @@
   position: relative;
 }
 
-// This is the tooltip bubble
+/* This is the tooltip bubble */
 .tooltipped::after {
   position: absolute;
   z-index: 1000000;
@@ -30,7 +30,7 @@
   opacity: 0;
 }
 
-// This is the tooltip arrow
+/* This is the tooltip arrow */
 .tooltipped::before {
   position: absolute;
   z-index: 1000001;
@@ -44,7 +44,7 @@
   opacity: 0;
 }
 
-// delay animation for tooltip
+/* delay animation for tooltip */
 @keyframes tooltip-appear {
   from {
     opacity: 0;
@@ -87,6 +87,7 @@
     top: 100%;
     right: 50%;
     margin-top: 6px;
+    transform: translateX(50%);
   }
 
   &::before {
@@ -96,9 +97,4 @@
     margin-right: -6px;
     border-bottom-color: var(--tooltip-background-color);
   }
-}
-
-/* Move the tooltip body to the center of the object. */
-.tooltipped-s::after {
-  transform: translateX(50%);
 }
