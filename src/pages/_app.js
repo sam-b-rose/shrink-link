@@ -1,6 +1,6 @@
 import React from 'react'
 import App, { Container } from 'next/app'
-import '~/assets/css/styles.scss'
+import '~/assets/css/styles.css'
 
 class Layout extends React.Component {
   render () {

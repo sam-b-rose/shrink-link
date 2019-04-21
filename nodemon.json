@@ -4,8 +4,10 @@
     ".git",
     "node_modules/**/node_modules",
     "dist",
+    "src/assets",
     "src/components",
     "src/pages",
+    "src/services",
     "src/static"
   ],
   "verbose": true,
@@ -15,7 +17,7 @@
   "runOnChangeOnly": false,
   "watch": [
     "src/**/*.js",
-    "src/**/*.scss"
+    "src/**/*.css"
   ],
   "env": {
     "NODE_ENV": "development"
