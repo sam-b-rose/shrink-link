@@ -2,7 +2,13 @@
 
 Shrink long URLs – they exist only as long as you need and can be passcode protected.
 
+[![Website](https://img.shields.io/website/https/shrinkl.ink.svg)](https://shrinkl.ink)
+[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/samrose3/shrink-link.svg)](https://hub.docker.com/r/samrose3/shrink-link)
+[![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/samrose3/shrink-link.svg)](https://github.com/samrose3/shrink-link/releases)
+[![CodeFactor](https://www.codefactor.io/repository/github/samrose3/shrink-link/badge)](https://www.codefactor.io/repository/github/samrose3/shrink-link)
+[![Known Vulnerabilities](https://snyk.io/test/github/samrose3/shrink-link/badge.svg?targetFile=package.json)](https://snyk.io/test/github/samrose3/shrink-link?targetFile=package.json)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![GitHub](https://img.shields.io/github/license/samrose3/shrink-link.svg)](https://github.com/samrose3/shrink-link/blob/master/LICENSE)
 [![Storybook](https://cdn.jsdelivr.net/gh/storybooks/brand@master/badge/badge-storybook.svg)](https://samrose3.github.io/shrink-link)
 
 ## Features
