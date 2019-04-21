@@ -11,7 +11,7 @@ Shrink long URLs – they exist only as long as you need and can be passcode pro
 [![GitHub](https://img.shields.io/github/license/samrose3/shrink-link.svg)](https://github.com/samrose3/shrink-link/blob/master/LICENSE)
 [![Storybook](https://cdn.jsdelivr.net/gh/storybooks/brand@master/badge/badge-storybook.svg)](https://samrose3.github.io/shrink-link)
 
-![preview](https://user-images.githubusercontent.com/11774595/56473327-6d35e580-642f-11e9-9d95-ebc342d0e766.png)
+[![preview](https://user-images.githubusercontent.com/11774595/56473327-6d35e580-642f-11e9-9d95-ebc342d0e766.png)](https://shrinkl.ink)
 
 ## Features
 
