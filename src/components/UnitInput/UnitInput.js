@@ -1,6 +1,9 @@
 import React from 'react'
 import capitalize from 'lodash/capitalize'
 
+import '../Input/input.css'
+import './unit-input.css'
+
 const UnitInput = props => {
   const {
     // text props

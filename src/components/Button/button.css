@@ -1,6 +1,6 @@
-.btn {
+.button {
   display: inline-block;
-  transition: box-shadow background-color 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
   cursor: pointer;
   box-shadow: 0 2px 0 var(--dark-blue);
   border: none;

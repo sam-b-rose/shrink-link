@@ -1,4 +1,5 @@
 import React from 'react'
+import './button.css'
 
 const Button = props => {
   const {
@@ -9,7 +10,7 @@ const Button = props => {
   } = props;
   return (
     <button
-      className={`btn mb2 ph3 pv2 br2 f6 link ${className}`}
+      className={`button mb2 ph3 pv2 br2 f6 link ${className}`}
       onClick={onClick}
       { ...remainingProps }>
       {children}

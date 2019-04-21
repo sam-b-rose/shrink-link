@@ -1,19 +1,10 @@
-// Source - GitHub Primer Tooltip
-// https://github.com/primer/css/blob/master/src/tooltips/tooltips.scss
-
-$em-spacer-5: 0.5em;
-$em-spacer-6: 0.75em;
-$border-style: solid;
-$border-radius: 3px;
-
-// Tooltips
-$tooltip-max-width: 250px;
-$tooltip-background-color: #000;
-$tooltip-text-color: #fff;
-$tooltip-delay: 0.4s;
-$tooltip-duration: 0.1s;
-
 .tooltipped {
+  --tooltip-max-width: 250px;
+  --tooltip-background-color: #000;
+  --tooltip-text-color: #fff;
+  --tooltip-delay: 0.4s;
+  --tooltip-duration: 0.1s;
+
   position: relative;
 }
 
@@ -22,9 +13,9 @@ $tooltip-duration: 0.1s;
   position: absolute;
   z-index: 1000000;
   display: none;
-  padding: $em-spacer-5 $em-spacer-6;
+  padding: 0.375rem 0.5rem;
   font: normal normal 11px/1.5 inherit;
-  color: $tooltip-text-color;
+  color: var(--tooltip-text-color);
   text-align: center;
   text-decoration: none;
   text-shadow: none;
@@ -34,8 +25,8 @@ $tooltip-duration: 0.1s;
   white-space: pre;
   pointer-events: none;
   content: attr(aria-label);
-  background: $tooltip-background-color;
-  border-radius: $border-radius;
+  background: var(--tooltip-background-color);
+  border-radius: 3px;
   opacity: 0;
 }
 
@@ -46,10 +37,10 @@ $tooltip-duration: 0.1s;
   display: none;
   width: 0;
   height: 0;
-  color: $tooltip-background-color;
+  color: var(--tooltip-background-color);
   pointer-events: none;
   content: "";
-  border: 6px $border-style transparent;
+  border: 6px solid transparent;
   opacity: 0;
 }
 
@@ -64,7 +55,7 @@ $tooltip-duration: 0.1s;
   }
 }
 
-// This will indicate when we'll activate the tooltip
+/* This will indicate when we'll activate the tooltip */
 .tooltipped,
 .tooltipped:hover,
 .tooltipped:active,
@@ -74,10 +65,10 @@ $tooltip-duration: 0.1s;
     display: inline-block;
     text-decoration: none;
     animation-name: tooltip-appear;
-    animation-duration: $tooltip-duration;
+    animation-duration: var(--tooltip-duration);
     animation-fill-mode: forwards;
     animation-timing-function: ease-in;
-    animation-delay: $tooltip-delay;
+    animation-delay: var(--tooltip-delay);
   }
 }
 
@@ -90,7 +81,7 @@ $tooltip-duration: 0.1s;
   }
 }
 
-// Tooltipped south
+/* Tooltipped south */
 .tooltipped-s {
   &::after {
     top: 100%;
@@ -103,11 +94,11 @@ $tooltip-duration: 0.1s;
     right: 50%;
     bottom: -7px;
     margin-right: -6px;
-    border-bottom-color: $tooltip-background-color;
+    border-bottom-color: var(--tooltip-background-color);
   }
 }
 
-// Move the tooltip body to the center of the object.
+/* Move the tooltip body to the center of the object. */
 .tooltipped-s::after {
   transform: translateX(50%);
 }

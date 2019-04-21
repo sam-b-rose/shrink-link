@@ -1,0 +1,9 @@
+input,
+textarea,
+select {
+  color: var(--black-80);
+}
+
+input:not([value=""]):invalid {
+  border-color: var(--red);
+}
