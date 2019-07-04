@@ -19,7 +19,9 @@
     "start": "NODE_ENV=production node src/index.js",
     "storybook": "start-storybook",
     "storybook:build": "build-storybook",
-    "deploy:book": "build-storybook && push-dir --dir=storybook-static --branch=gh-pages && rimraf storybook-static"
+    "deploy:book": "build-storybook && push-dir --dir=storybook-static --branch=gh-pages && rimraf storybook-static",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "husky": {
     "hooks": {
@@ -43,7 +45,8 @@
     "next": "^8.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "tachyons": "^4.11.1"
+    "tachyons": "^4.11.1",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
@@ -79,5 +82,6 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "snyk": true
 }
