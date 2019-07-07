@@ -1,26 +1,7 @@
 {
-  "restartable": "rs",
-  "delay": "2500",
-  "ignore": [
-    ".git",
-    "node_modules/**/node_modules",
-    "dist",
-    "src/assets",
-    "src/components",
-    "src/pages",
-    "src/services",
-    "src/static"
-  ],
-  "verbose": true,
-  "execMap": {
-    "js": "node"
-  },
-  "runOnChangeOnly": false,
   "watch": [
-    "src/**/*.js"
+    "src/server"
   ],
-  "env": {
-    "NODE_ENV": "development"
-  },
-  "ext": "js"
+  "ext": "ts",
+  "exec": "ts-node --project tsconfig.server.json src/server/index.ts"
 }

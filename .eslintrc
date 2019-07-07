@@ -1,7 +1,6 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 2018,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
@@ -15,23 +14,17 @@
   "extends": [
     "eslint:recommended",
     "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
     "prettier",
+    "prettier/@typescript-eslint",
     "prettier/react"
   ],
-  "rules": {
-    "no-console": 1,
-    "react/prop-types": 0,
-    "jsx-a11y/label-has-for": 0,
-    "prettier/prettier": [
-      "error",
-      {
-        "singleQuote": true
-      }
-    ]
-  },
   "plugins": [
+    "@typescript-eslint",
     "react",
     "import",
     "jsx-a11y",
@@ -42,11 +35,16 @@
       "version": "detect"
     },
     "import/resolver": {
+      "typescript": {},
       "babel-module": {
         "alias": {
           "~": "./src"
         }
       }
     }
+  },
+  "rules": {
+    "no-console": 1,
+    "prettier/prettier": "error"
   }
 }

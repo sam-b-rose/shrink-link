@@ -1,0 +1,33 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2017",
+    "lib": [
+      "es2017"
+    ],
+    "outDir": "src/.next/server",
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "node_modules/*",
+        "src/types/*"
+      ],
+      "~/*": [
+        "src/*"
+      ]
+    },
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+    "noEmit": true,
+    "strict": false,
+    "noStrictGenericChecks": true,
+  },
+  "include": [
+    "src/server/**/*.ts"
+  ],
+  "exclude": [
+    "src/.next"
+  ]
+}
