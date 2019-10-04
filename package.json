@@ -52,7 +52,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "tachyons": "^4.11.1",
-    "snyk": "^1.192.3"
+    "snyk": "^1.230.5"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
