@@ -1,6 +1,6 @@
 # ShrinkL.ink
 
-Shrink long URLs – they exist only as long as you need and can be passcode protected.
+Shrink long URLs – they exist only as long as you need and can be password protected.
 
 [![Website](https://img.shields.io/website/https/shrinkl.ink.svg)](https://shrinkl.ink)
 [![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/samrose3/shrink-link.svg)](https://hub.docker.com/r/samrose3/shrink-link)
@@ -15,21 +15,21 @@ Shrink long URLs – they exist only as long as you need and can be passcode pro
 
 ## Features
 
-- Shrink absurdly long URLs into small, sharable ones.
-- Add a timed duration of when the URL can be accessed. Use cases:
-  - sharing a prototype with sponsor users
-  - showing website progress to a client
-- Apply a passcode to protect access to the URL. Serves as an extra layer of privacy when sharing links.
-- Redirect and frame links:
-  - Redirect link takes the user directly to the original link
-  - Frame link embeds the original link in an [iframe](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/iframe) to help hide the URL from the user
-- Local history of created links with expiration status
+* Shrink absurdly long URLs into small, sharable ones.
+* Add a timed duration of when the URL can be accessed. Use cases:
+  * sharing a prototype with sponsor users
+  * showing website progress to a client
+* Apply a passcode to protect access to the URL. Serves as an extra layer of privacy when sharing links.
+* Redirect and frame links:
+  * Redirect link takes the user directly to the original link
+  * Frame link embeds the original link in an [iframe](https://developer.mozilla.org/en*US/docs/Mozilla/Tech/XUL/iframe) to help hide the URL from the user
+* Local history of created links with expiration status
 
 ## Getting Started
 
 Clone the repo and install dependencies.
 
-```bash
+```shell
 git clone https://github.com/samrose3/shrink-link.git
 cd shrink-link
 npm install
@@ -39,14 +39,14 @@ npm install
 
 #### Using Docker Compose
 
-You can run the app in development mode using the `docker-compose.dev.yml` configuration. This will
+You can run the app in development mode using the `docker-compose.dev.yml` configuration. This will do the following in two docker containers:
 
-- run the Express server
-- spin up and link a MongoDB instance
+* Run the Express server
+* Spin up and link a MongoDB instance
 
 ##### Starting
 
-```bash
+```shell
 docker-compose -f "docker-compose.dev.yml" up -d --build
 ```
 
@@ -56,7 +56,7 @@ The app should now be running on [`http://localhost:3000`](http://localhost:3000
 
 You can stop the Docker containers with a Compose `down` command.
 
-```bash
+```shell
 docker-compose -f "docker-compose.dev.yml" down
 ```
 
@@ -77,7 +77,7 @@ MONGO_URL=mongodb://<user>:<password>@<hostname>:<port>/shrink-link
 
 Make sure your database is running, then start the app in development mode.
 
-```bash
+```shell
 npm run dev
 ```
 
@@ -89,6 +89,6 @@ You can also use Docker Compose to run the app and the database. This uses the `
 
 Run a production build of the application locally.
 
-```bash
+```shell
 docker-compose -f "docker-compose.yml" up -d --build
 ```
