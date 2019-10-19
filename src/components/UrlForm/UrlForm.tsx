@@ -10,7 +10,7 @@ const units = ['minutes', 'days', 'months']
 
 interface State {
   url: string
-  duration: number
+  duration: number | string
   unit: string
   passcode: string
 }
@@ -22,7 +22,7 @@ interface Props {
 class UrlForm extends React.Component<Props, State> {
   private initialState = {
     url: '',
-    duration: NaN,
+    duration: '',
     unit: units[0],
     passcode: ''
   }
