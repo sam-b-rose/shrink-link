@@ -1,6 +1,33 @@
 import fetch from 'isomorphic-unfetch'
 
-export const encodeUrl = async payload => {
+interface EncodeUrlPayload {
+  url: string
+  duration?: number | string
+  unit?: string
+  passcode?: string
+}
+
+interface EncodeUrlResponse {
+  hash: string
+  expires?: number | null
+}
+
+interface DecodeUrlError {
+  message?: string
+  hasPasscode?: boolean
+}
+
+interface DecodeUrlResponse {
+  id: number
+  created: Date
+  url: string
+  expires: Date
+  passcode: string
+}
+
+export const encodeUrl = async (
+  payload: EncodeUrlPayload
+): Promise<EncodeUrlResponse> => {
   const res = await fetch('/api/url', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -9,12 +36,22 @@ export const encodeUrl = async payload => {
   return res.json()
 }
 
-export const decodeUrl = async ({ hash }) => {
+export const decodeUrl = async ({
+  hash
+}: {
+  hash: string
+}): Promise<DecodeUrlResponse | DecodeUrlError> => {
   const res = await fetch(`/api/url/${hash}`)
   return res.json()
 }
 
-export const attemptPasscode = async ({ hash, passcode }) => {
+export const attemptPasscode = async ({
+  hash,
+  passcode
+}: {
+  hash: string
+  passcode: string
+}): Promise<DecodeUrlResponse | DecodeUrlError> => {
   const res = await fetch(`/api/url/${hash}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
