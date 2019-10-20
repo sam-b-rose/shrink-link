@@ -60,8 +60,21 @@ export const attemptPasscode = async ({
   return res.json()
 }
 
+export const deleteUrl = async ({
+  hash
+}: {
+  hash: string
+}): Promise<{ message: string }> => {
+  const res = await fetch(`/api/url/${hash}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' }
+  })
+  return res.json()
+}
+
 export default {
   encodeUrl,
   decodeUrl,
+  deleteUrl,
   attemptPasscode
 }

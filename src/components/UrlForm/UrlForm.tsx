@@ -4,7 +4,6 @@ import Button from '~/components/Button'
 import Input from '~/components/Input'
 import UnitInput from '~/components/UnitInput'
 import { encodeUrl } from '~/services/api'
-import { UrlResponse } from '~/types/data'
 
 const units = ['minutes', 'days', 'months']
 
@@ -16,7 +15,12 @@ interface State {
 }
 
 interface Props {
-  onSubmit: (data: UrlResponse) => void
+  onSubmit: (data: {
+    url: string
+    passcode: string
+    hash: string
+    expires?: number
+  }) => void
 }
 
 class UrlForm extends React.Component<Props, State> {
@@ -27,22 +31,26 @@ class UrlForm extends React.Component<Props, State> {
     passcode: ''
   }
   public state = { ...this.initialState }
-  public reset = (): void => {
+  private reset = (): void => {
     this.setState({ ...this.initialState })
   }
-  public submit = async (e: FormEvent): Promise<void> => {
+  private submit = async (e: FormEvent): Promise<void> => {
+    const formEl = e.target as HTMLFormElement
     e.preventDefault()
     const { url, passcode } = this.state
     const payload = this.state
     const data = await encodeUrl(payload)
     this.props.onSubmit({ url, passcode, ...data })
-    if (!data.message) this.reset()
+    this.reset()
+    formEl.reset()
+    const firstInput = formEl[0] as HTMLInputElement
+    firstInput.focus()
   }
-  public onInputChange = ({ target }: ChangeEvent<HTMLInputElement>): void => {
+  private onInputChange = ({ target }: ChangeEvent<HTMLInputElement>): void => {
     //@ts-ignore
     this.setState({ [target.name]: target.value })
   }
-  public onSelectChange = ({
+  private onSelectChange = ({
     target
   }: ChangeEvent<HTMLSelectElement>): void => {
     //@ts-ignore

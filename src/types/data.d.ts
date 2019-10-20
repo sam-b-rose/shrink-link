@@ -4,6 +4,7 @@ export interface UrlResponse {
   url?: string
   hash: string
   expires: string
+  passcode: string
 }
 
 export interface NotificationData {
