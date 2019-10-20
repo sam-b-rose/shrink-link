@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { getUrl, createUrl } from './url.controllers'
+import { getUrl, createUrl, deleteUrl } from './url.controllers'
 
 const router = Router()
 
@@ -13,5 +13,6 @@ router
   .route('/:hash')
   .get(getUrl)
   .post(getUrl)
+  .delete(deleteUrl)
 
 export default router
