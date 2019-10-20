@@ -90,3 +90,18 @@ export const getUrl = async (req, res) => {
   const { url } = doc
   return res.status(200).json({ url })
 }
+
+/**
+ * Removes the Url given the encoded hash string (s)
+ */
+export const deleteUrl = async (req, res) => {
+  // Decode string
+  const { hash: urlHash } = req.params
+  const id = decode(urlHash)
+
+  // Get URL from DB
+  const doc = await Url.findOneAndRemove({ id })
+
+  const { url } = doc
+  return res.status(200).json({ message: `Removed URL ${url}` })
+}
