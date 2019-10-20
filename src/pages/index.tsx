@@ -5,6 +5,7 @@ import UrlForm from '~/components/UrlForm'
 import UrlHistory from '~/components/UrlHistory'
 import Tabs from '~/components/Tabs'
 import LinkSVG from '~/assets/svg/link.svg'
+import { deleteUrl } from '~/services/api'
 import { UrlResponse, NotificationData } from '~/types/data'
 
 const MAX_HISTORY = 25
@@ -27,8 +28,10 @@ class IndexPage extends React.Component<{}, State> {
     selectedTab: 0,
     history: [],
     details: {
+      url: '',
       hash: '',
-      expires: ''
+      expires: '',
+      passcode: ''
     }
   }
 
@@ -80,12 +83,32 @@ class IndexPage extends React.Component<{}, State> {
     this.setState({ details: url })
   }
 
-  private onRemoveLink = (_, payload: { data: UrlResponse }): void => {
+  private onRemoveLink = async (
+    _,
+    payload: { data: UrlResponse }
+  ): Promise<void> => {
     const removedLink = payload.data
     const history = this.state.history.filter(
       (item): boolean => item.hash !== removedLink.hash
     )
+    const { message } = await deleteUrl(removedLink)
+    const hasErrorMessage = message === undefined
     this.setState({ history }, this.setStorage)
+    let notification: NotificationData = {
+      type: hasErrorMessage ? 'error' : 'success',
+      message: hasErrorMessage
+        ? 'Failed to delete your link.'
+        : 'Your link has been deleted!'
+    }
+    this.setState({
+      history,
+      notification,
+      showNotification: true,
+      notificationTimeout: +setTimeout(
+        (): void => this.onDismissNotification(),
+        3000
+      )
+    })
   }
 
   private onDismissNotification = (): void => {
