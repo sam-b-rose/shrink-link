@@ -2,14 +2,14 @@ import express from 'express'
 import { json, urlencoded } from 'body-parser'
 import morgan from 'morgan'
 import consola from 'console'
-import next from 'next'
+import next, { Server } from 'next'
 
 import config from './config'
 import nextConfig from '../../next.config'
 import apiRouter from './resources'
 import { connect } from './utils/db'
 
-const app = next({ dev: config.isDev, ...nextConfig })
+const app: Server = next({ dev: config.isDev, ...nextConfig })
 const handle = app.getRequestHandler()
 
 export const start = async (): Promise<void> => {
@@ -57,7 +57,7 @@ export const start = async (): Promise<void> => {
       }
     )
 
-    server.listen(config.port, () => {
+    server.listen(config.port, (): void => {
       consola.log(`Read on http://localhost:${config.port}`)
     })
   } catch (e) {

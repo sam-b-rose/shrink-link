@@ -82,7 +82,7 @@ class UrlForm extends React.Component<Props, State> {
             min="0"
             max="100000"
             placeholder="–"
-            value={duration}
+            value={Number(duration)}
             onChange={this.onInputChange}
             unit={unit}
             units={units}

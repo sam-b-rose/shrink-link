@@ -17,7 +17,7 @@ interface DecodeUrlError {
   hasPasscode?: boolean
 }
 
-interface DecodeUrlResponse {
+interface DecodeUrlResponse extends DecodeUrlError {
   id: number
   created: Date
   url: string
@@ -40,7 +40,7 @@ export const decodeUrl = async ({
   hash
 }: {
   hash: string
-}): Promise<DecodeUrlResponse | DecodeUrlError> => {
+}): Promise<DecodeUrlResponse> => {
   const res = await fetch(`/api/url/${hash}`)
   return res.json()
 }
@@ -51,7 +51,7 @@ export const attemptPasscode = async ({
 }: {
   hash: string
   passcode: string
-}): Promise<DecodeUrlResponse | DecodeUrlError> => {
+}): Promise<DecodeUrlResponse> => {
   const res = await fetch(`/api/url/${hash}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

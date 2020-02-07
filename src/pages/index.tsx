@@ -277,6 +277,7 @@ class IndexPage extends React.Component<{}, State> {
                 onSelect={this.onSelectTab}
               />
               {selectedTab === 0 ? (
+                //@ts-ignore
                 <UrlForm onSubmit={this.onSubmit} />
               ) : (
                 <UrlHistory
@@ -298,6 +299,7 @@ class IndexPage extends React.Component<{}, State> {
               </Notification>
               <div className="mb5">
                 <h2>Create</h2>
+                //@ts-ignore
                 <UrlForm onSubmit={this.onSubmit} />
               </div>
               <div className="mb4">
