@@ -30,7 +30,4 @@ function compose(config, mode) {
   return pipeline[mode].reduce((config, next) => next(config), config)
 }
 
-module.exports = compose(
-  { ...baseConfig, ...envConfig },
-  mode
-)
+module.exports = compose({ ...baseConfig, ...envConfig }, mode)
