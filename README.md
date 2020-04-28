@@ -2,8 +2,7 @@
 
 Shrink long URLs – they exist only as long as you need and can be password protected.
 
-[![Website](https://img.shields.io/website/https/shrinkl.ink.svg)](https://shrinkl.ink)
-[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/samrose3/shrink-link.svg)](https://hub.docker.com/r/samrose3/shrink-link)
+[![Website](https://img.shields.io/website/https/shrink-link.samrose3.com.svg)](https://shrink-link.samrose3.com)
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/samrose3/shrink-link.svg)](https://github.com/samrose3/shrink-link/releases)
 [![CodeFactor](https://www.codefactor.io/repository/github/samrose3/shrink-link/badge)](https://www.codefactor.io/repository/github/samrose3/shrink-link)
 [![Known Vulnerabilities](https://snyk.io/test/github/samrose3/shrink-link/badge.svg?targetFile=package.json)](https://snyk.io/test/github/samrose3/shrink-link?targetFile=package.json)
@@ -11,7 +10,7 @@ Shrink long URLs – they exist only as long as you need and can be password pro
 [![GitHub](https://img.shields.io/github/license/samrose3/shrink-link.svg)](https://github.com/samrose3/shrink-link/blob/master/LICENSE)
 [![Storybook](https://cdn.jsdelivr.net/gh/storybooks/brand@master/badge/badge-storybook.svg)](https://samrose3.github.io/shrink-link)
 
-<a href="https://shrinkl.ink" rel="nofollow"><img src="https://user-images.githubusercontent.com/11774595/56473327-6d35e580-642f-11e9-9d95-ebc342d0e766.png" alt="preview" style="max-width:100%;"></a>
+<a href="https://shrink-link.samrose3.com" rel="nofollow"><img src="https://user-images.githubusercontent.com/11774595/56473327-6d35e580-642f-11e9-9d95-ebc342d0e766.png" alt="preview" style="max-width:100%;"></a>
 
 ## Features
 
